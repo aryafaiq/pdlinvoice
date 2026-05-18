@@ -18,6 +18,25 @@
             color: #354762;
             transition: color 0.2s ease;
         }
+
+        .table-custom {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Memastikan teks di header vertikalnya di tengah (center) */
+        .table-custom thead th {
+            vertical-align: middle;
+            text-align: center;
+            background-color: #00246B;
+
+        }
+
+        /* Mengatur keselarasan teks untuk baris data */
+        .table-custom tbody td {
+            vertical-align: middle;
+        }
     </style>
 @endsection
 
@@ -96,16 +115,54 @@
                             <h2 class="fs-4 fw-bold text-dark m-0">INVOICE</h2>
                         </div>
 
-                        <label for="exampleDataList" class="form-label">Datalist example</label>
-                        <input class="form-control" list="datalistOptions" id="exampleDataList"
-                            placeholder="Type to search...">
-                        <datalist id="datalistOptions">
-                            <option value="San Francisco">
-                            <option value="New York">
-                            <option value="Seattle">
-                            <option value="Los Angeles">
-                            <option value="Chicago">
-                        </datalist>
+                        <div class="table-responsive table-custom">
+                            <table class="table table-bordered table-hover m-0">
+                                <thead class="table-dark border-light-subtle">
+                                    <!-- Baris Pertama Header -->
+                                    <tr>
+                                        <th rowspan="2" style="width: 5%;">NO</th>
+                                        <th rowspan="2" style="width: 45%;">Description & Specification</th>
+                                        <th rowspan="2" style="width: 12%;">Quantity</th>
+                                        <th rowspan="2" style="width: 12%;">Feet</th>
+                                        <th colspan="2" style="width: 26%;">Amount</th>
+                                    </tr>
+                                    <!-- Baris Kedua Header (Anak dari Amount) -->
+                                    <tr>
+                                        <th>Rate</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Contoh Baris Data 1 -->
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td>Kabel Cooper Core - Standar Industri (High Quality)</td>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">50</td>
+                                        <td>Rp 150.000</td>
+                                        <td>Rp 750.000</td>
+                                    </tr>
+                                    <!-- Contoh Baris Data 2 -->
+                    
+                                    <!-- Contoh Baris Data 3 -->
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td>Kotak Panel Listrik Outdoor - Tahan Air (IP65)</td>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center">-</td>
+                                        <td>Rp 350.000</td>
+                                        <td>Rp 700.000</td>
+                                    </tr>
+                                </tbody>
+                                <!-- Bagian Total Akhir (Opsional) -->
+                                <tfoot class="table-light fw-bold">
+                                    <tr>
+                                        <td colspan="5" class="text-end">Grand Total:</td>
+                                        <td>Rp 1.900.000</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </form>
 
