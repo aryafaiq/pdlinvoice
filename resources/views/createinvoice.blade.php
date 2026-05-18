@@ -145,6 +145,14 @@
                                     <!-- Contoh Baris Data 2 -->
                     
                                     <!-- Contoh Baris Data 3 -->
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td>Kotak Panel Listrik Outdoor - Tahan Air (IP65)</td>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center">-</td>
+                                        <td>Rp 350.000</td>
+                                        <td>Rp 700.000</td>
+                                    </tr>
                                 </tbody>
                                 <!-- Bagian Total Akhir (Opsional) -->
                                 <tfoot class="table-light fw-bold">
