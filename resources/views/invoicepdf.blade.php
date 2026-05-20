@@ -77,17 +77,16 @@
 
         /* Info Ringkas Meta Data */
         .meta-table {
-            width: 100%;
+            width: 50%;
             margin-bottom: 30px;
         }
 
         .meta-table td {
             vertical-align: top;
-            width: 50%;
         }
 
         .meta-label {
-            font-size: 10px;
+            font-size: 12px;
             text-transform: uppercase;
             color: #64748b;
             font-weight: bold;
@@ -125,6 +124,13 @@
             background-color: #fafafa;
         }
 
+        .total-row td {
+            font-weight: bold;
+
+            padding-top: 100px;
+            padding-bottom: 15px;
+        }
+
         /* Badge bergaya untuk No Container */
         .badge-container {
             background-color: #f1f5f9;
@@ -151,6 +157,23 @@
         .signature-space {
             height: 70px;
         }
+
+        .copyright-footer {
+            position: fixed;
+            bottom: -0.5cm;
+            /* Menempel erat di batas margin bawah kertas */
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size:8px;
+            color: #94a3b8;
+            /* Warna abu-abu halus */
+            border-top: 1px solid #e2e8f0;
+            padding-top: 8px;
+        }
+        .fbold{
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -160,11 +183,16 @@
     <div class="header-container">
         <div class="header-left">
             <img src="{{ $logoBase64 }}" alt="" style="width: 200px">
+            <h4>PT PORTIBION DJEWELINDO LOGISTIK</h4>
         </div>
         <div class="header-right">
             <h2 class="doc-title">INVOICE</h2>
             <p style="margin: 5px 0 0 0; color: #64748b;">No: <span class="font-bold"
                     style="color: #00246B;">{{ $data->invoice_no ?? 'INV-2026-001' }}</span></p>
+            <div class="">Date: <span class="font-bold" style="font-size: 13px; color: #1e293b;">
+                    {{ date('d-m-Y', strtotime($data->invoice_date)) }}
+                </span></div>
+                
         </div>
         <div class="clear"></div>
     </div>
@@ -175,15 +203,49 @@
     <table class="meta-table">
         <tr>
             <td>
-                <div class="meta-label">Invoice To :</div>
-                <div class="font-bold" style="font-size: 13px; color: #1e293b;">
-                    {{ $data->perusahaan->nama_perusahaan ?? 'PT. Maju Bersama' }}</div>
-                <div style="color: #64748b; margin-top: 2px;">{{ $data->perusahaan->alamat_perusahaan }}</div>
+                <div class="meta-label">Invoice To</div>
             </td>
-            <td class="text-right">
-                <div class="meta-label">Tanggal Invoice:</div>
-                <div class="font-bold" style="font-size: 13px; color: #1e293b;">{{ $invoice_date ?? '17 Mei 2026' }}
-                </div>
+            <td>
+                :
+            </td>
+            <td>
+                <span class="font-bold" style="font-size: 13px; color: #1e293b;"> {{ $data->perusahaan->nama_perusahaan }}</span>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="meta-label">Address</div>
+            </td>
+            <td>
+                :
+            </td>
+            <td>
+                <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->alamat_perusahaan }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="margin-top: 2px;" class="meta-label">PIC</div>
+                
+            </td>
+            <td>
+                :
+            </td>
+            <td>
+                <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->pic }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="margin-top: 2px;" class="meta-label">NO Tlp</div>
+                
+            </td>
+            <td>
+                :
+            </td>
+            <td>
+                <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->no_tlp ?? '-' }}</span>
             </td>
         </tr>
     </table>
@@ -195,7 +257,7 @@
                 <th style="width: 35%;">Description</th>
                 <th style="width: 20%;">Quantity</th>
                 <th style="width: 20%;">RATE</th>
-                <th style="width: 25%;">AMOUNT</th>
+                <th style="width: 25%;">TOTAL</th>
             </tr>
         </thead>
         <tbody>
@@ -203,32 +265,52 @@
             {{-- @foreach ($items as $item) --}}
             <tr>
                 <td class="font-bold" style="color: #00246B;">{{ $data->description ?? 'Suku Cadang Mesin' }}</td>
-                <td>{{ $data->quantity }}</td>
-                <td>150,0000.00</td>
-                <td>150,0000.00</td>
+                <td>{{ $data->quantity . ' ' . 'DOC' }}</td>
+                <td>{{ number_format($amount['rate'], 2, ',', '.') }}</td>
+                <td>{{ number_format($amount['total'], 2, ',', '.') }}</td>
 
             </tr>
             {{-- @endforeach --}}
         </tbody>
+        <tfoot>
+            <tr class="total-row">
+                <td colspan=""></td>
+                <td colspan=""></td>
+                <td class=" grand-total-cell">GRAND TOTAL:</td>
+                <td class="grand-total-cell">{{ 'Rp.' . ' ' . number_format($amount['total'], 2, ',', '.') }}</td>
+            </tr>
+        </tfoot>
     </table>
+    <div class="divider" style="margin: 5px 0; border-top: 1px solid #334155;"></div>
+    <div class="" style="">
+        <p>Please Transfer the payment as stated above (Full Amount) To: <br>
+            Bank Name : Bank BCA <br>
+            A/N : DJENGISKAN JULIANTO <br>
+            A/C : 6320289741 </p>
+    </div>
+
 
     <!-- KETERANGAN TAMBAHAN / TANDA TANGAN -->
     <table class="footer-section">
         <tr>
-            <td style="width: 60%; vertical-align: bottom; color: #94a3b8; font-size: 10px;">
-                * Dokumen ini sah dan diterbitkan secara komputerisasi oleh sistem PDL Invoice.
-            </td>
             <td style="width: 40%;">
                 <div class="signature-box">
-                    <div style="color: #64748b; font-size: 11px; margin-bottom: 10px;">Hormat Kami,</div>
-                    <div class="signature-space"></div>
+                    <div style="color: #64748b; font-size: 11px; margin-bottom: 10px;">Approve By:</div>
+                    <div class="signature-space"><img src="{{ $signBase64 }}" alt="" style="width: 120px"></div>
                     <div class="divider" style="margin: 5px 0; border-top: 1px solid #334155;"></div>
-                    <div class="font-bold" style="color: #00246B;">Admin Logistik</div>
-                    <div style="color: #64748b; font-size: 10px;">PDL Invoice System</div>
+                    <div class="font-bold" style="color: #00246B;">Darius</div>
                 </div>
             </td>
         </tr>
     </table>
+
+    <div class="copyright-footer">
+        <div class="">
+            <p class="fbold">PT PORTIBION DJEWELINDO LOGISTIK</p>
+            <p>JL EDAM II NO.15C RT.002 RW.016, TANJUNG PRIOK, TANJUNG PRIOK, KOTA ADMINISTRASI
+                JAKARTA UTARA, DAERAH KHUSUS IBUKOTA JAKARTA</p>
+        </div>
+    </div>
 
 </body>
 
