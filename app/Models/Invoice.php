@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Perusahaan;
 
-#[Fillable(['invoice_no', 'invoice_date', 'nama_barang', 'shipper', 'party', 'weight', 'no_container'])]
+
+#[Fillable(['perusahaan_id', 'invoice_no', 'invoice_date', 'desctiption', 'quantity'])]
 class Invoice extends Model
 {
-    //
+    public function perusahaan()
+    {
+        return $this->belongsTo(Perusahaan::class);
+    }
 }

@@ -74,6 +74,14 @@
 
                         <!-- Row 1: Dua Kolom (Nama & Email) -->
                         <div class="row g-3 mb-3">
+                            <div class="col-sm-12">
+                                <select class="form-select" aria-label="Default select example" name="perusahaan_id">
+                                    <option selected>Pilih Perusahaan</option>
+                                    @foreach ($perusahaan as $pt)
+                                        <option value="{{ $pt->id }}">{{ $pt->nama_perusahaan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="col-sm-6">
                                 <label for="inputNama" class="form-label text-secondary fw-medium small">Date</label>
                                 <input type="date" class="form-control rounded-3" id="inputNama" name="invoice_date">
@@ -83,78 +91,16 @@
                                 <input type="text" class="form-control rounded-3" id="inputEmail" name="invoice_no"
                                     placeholder="Contoh: INV-001" value="{{ $invoice }}">
                             </div>
-                        </div>
-                        <div class="row g-3 mb-3">
                             <div class="col-sm-6">
-                                <label for="inputNama" class="form-label text-secondary fw-medium small">Nama Barang</label>
-                                <input type="text" class="form-control rounded-3" id="inputNama" name="nama_barang">
+                                <label for="" class="form-label text-secondary fw-medium small">Description</label>
+                                <input type="text" class="form-control rounded-3" id="inputEmail" name="description"
+                                    placeholder="DOC" value="">
                             </div>
                             <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">Shipper</label>
-                                <input type="text" class="form-control rounded-3" id="" name="shipper">
+                                <label for="" class="form-label text-secondary fw-medium small">Quantity</label>
+                                <input type="text" class="form-control rounded-3" id="inputEmail" name="quantity"
+                                    placeholder="1" value="">
                             </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">Party</label>
-                                <input type="text" class="form-control rounded-3" id="" name="party">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">Weight</label>
-                                <input type="number" class="form-control rounded-3" id="" name="weight">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">No Container</label>
-                                <input type="text" class="form-control rounded-3" id="" name="no_container">
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- FORM UNTUK DATA HARGA --}}
-                    <div class="card p-4 bg-white mt-3">
-                        <!-- Form Header -->
-                        <div class="mb-4">
-                            <h2 class="fs-4 fw-bold text-dark m-0">INVOICE</h2>
-                        </div>
-
-                        <div class="table-responsive table-custom">
-                            <table class="table table-bordered table-hover m-0">
-                                <thead class="table-dark border-light-subtle">
-                                    <!-- Baris Pertama Header -->
-                                    <tr>
-                                        <th rowspan="2" style="width: 5%;">NO</th>
-                                        <th rowspan="2" style="width: 45%;">Description & Specification</th>
-                                        <th rowspan="2" style="width: 12%;">Quantity</th>
-                                        <th rowspan="2" style="width: 12%;">Feet</th>
-                                        <th colspan="2" style="width: 26%;">Amount</th>
-                                    </tr>
-                                    <!-- Baris Kedua Header (Anak dari Amount) -->
-                                    <tr>
-                                        <th>Rate</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Contoh Baris Data 1 -->
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td>Kabel Cooper Core - Standar Industri (High Quality)</td>
-                                        <td class="text-center">5</td>
-                                        <td class="text-center">50</td>
-                                        <td>Rp 150.000</td>
-                                        <td>Rp 750.000</td>
-                                    </tr>
-                                    <!-- Contoh Baris Data 2 -->
-                    
-                                    <!-- Contoh Baris Data 3 -->
-                                    
-                                </tbody>
-                                <!-- Bagian Total Akhir (Opsional) -->
-                                <tfoot class="table-light fw-bold">
-                                    <tr>
-                                        <td colspan="5" class="text-end">Grand Total:</td>
-                                        <td>Rp 1.900.000</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
                         </div>
                     </div>
                 </form>

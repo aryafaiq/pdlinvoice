@@ -57,25 +57,19 @@
                     <tr>
                         <th scope="col" class="py-3 px-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">No. Invoice</th>
                         <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Tanggal</th>
-                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Nama Barang</th>
-                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Shipper</th>
-                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Party</th>
-                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Weight</th>
-                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">No. Container</th>
+                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Penerima</th>
+                        <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">PIC</th>
                         <th scope="col" class="py-3 text-center text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em; width: 100px;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="border-top-0">
-                    <!-- Contoh Baris Data -->
                     @foreach ($invoices as $invoice)
                         <tr class="text-secondary" style="font-size: 14px;">
                             <td class="px-3 fw-semibold text-dark">{{ $invoice->invoice_no }}</td>
                             <td>{{ $invoice->invoice_date }}</td>
-                            <td>{{ $invoice->nama_barang }}</td>
-                            <td>{{ $invoice->shipper }}</td>
-                            <td>{{ $invoice->party }}</td>
-                            <td>{{ $invoice->weight }}</td>
-                            <td><span class="badge bg-light text-dark border border-light-subtle rounded-2 px-2 py-1.5 font-monospace">{{ $invoice->no_container }}</span></td>
+                            <td>{{ $invoice->perusahaan->nama_perusahaan }}</td>
+                            <td>{{ $invoice->perusahaan->pic }}</td>
+                            
                             <td class="text-center">
                                 <div class="d-inline-flex gap-1">
                                     <a href="{{ route('invoice.edit', $invoice->id) }}" class="btn btn-light btn-sm text-primary p-2 rounded-3 border-0" title="Edit"><i data-lucide="pencil" style="width: 14px; height: 14px;"></i></a>

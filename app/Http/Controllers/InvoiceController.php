@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -12,7 +13,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();
+        $invoices = Invoice::with('perusahaan')->get();
         return view('invoice', compact('invoices'));
     }
 
@@ -22,7 +23,9 @@ class InvoiceController extends Controller
     public function create()
     {
         $lastinvoice = Invoice::latest('id')->value('invoice_no');
-        return view('createinvoice', compact('lastinvoice'));
+        $perusahaan = Perusahaan::all();
+
+        return view('createinvoice', compact('lastinvoice', 'perusahaan'));
     }
 
     /**
@@ -30,14 +33,13 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
+            'perusahaan_id' => 'required',
             'invoice_no' => 'required|unique:invoices,invoice_no',
             'invoice_date' => 'nullable|date',
-            'nama_barang' => 'nullable|string',
-            'shipper' => 'nullable|string',
-            'party' => 'nullable|string',
-            'weight' => 'nullable|string',
-            'no_container' => 'nullable|string',
+            'description' => 'nullable|string',
+            'quantity' => 'nullable|string',
         ]);
         Invoice::create($data);
         return redirect()->route('invoice.index')->with('success', 'Invoice created successfully.');
