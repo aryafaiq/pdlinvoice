@@ -65,13 +65,8 @@
     <div class="d-flex flex-column gap-4">
       <!-- Logo / Brand -->
       <div class="d-flex align-items-center gap-3 px-2 py-1">
-        <div class="bg-indigo-light text-indigo rounded-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px;">
-          <i data-lucide="layers" style="width: 20px; height: 20px;"></i>
-        </div>
-        <div>
-          <h1 class="fs-6 fw-semibold text-dark m-0 tracking-wide">PDL</h1>
-          <p class="text-muted m-0" style="font-size: 11px;">Portibion Djewelindo Logistik</p>
-        </div>
+          <img src="{{ asset('img/logopdl.png') }}" alt="" style="width: 100px">
+        
       </div>
 
       <!-- Menu Utama -->

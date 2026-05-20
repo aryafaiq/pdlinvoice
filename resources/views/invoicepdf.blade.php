@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Invoice {{ $invoice_no ?? 'PDL' }}</title>
@@ -8,7 +9,7 @@
         @page {
             margin: 1.2cm;
         }
-        
+
         body {
             font-family: 'Helvetica', 'Arial', sans-serif;
             color: #334155;
@@ -20,12 +21,15 @@
         .clear {
             clear: both;
         }
+
         .text-right {
             text-align: right;
         }
+
         .text-center {
             text-align: center;
         }
+
         .font-bold {
             font-weight: bold;
         }
@@ -35,23 +39,29 @@
             float: left;
             width: 50%;
         }
+
         .header-right {
             float: right;
             width: 50%;
             text-align: right;
+            margin-top: 5%
         }
+
         .brand-title {
             font-size: 24px;
-            color: #00246B; /* Warna Navy PDL Anda */
+            color: #00246B;
+            /* Warna Navy PDL Anda */
             margin: 0;
             font-weight: bold;
             letter-spacing: 1px;
         }
+
         .brand-subtitle {
             font-size: 10px;
             color: #64748b;
             margin: 2px 0 0 0;
         }
+
         .doc-title {
             font-size: 20px;
             color: #334155;
@@ -61,8 +71,8 @@
 
         /* Divider Garis Tipis */
         .divider {
-            border-top: 1px solid #e2e8f0;
-            margin: 20px 0;
+            border-top: 2px solid #e2e8f0;
+            margin: 15px 0;
         }
 
         /* Info Ringkas Meta Data */
@@ -70,10 +80,12 @@
             width: 100%;
             margin-bottom: 30px;
         }
+
         .meta-table td {
             vertical-align: top;
             width: 50%;
         }
+
         .meta-label {
             font-size: 10px;
             text-transform: uppercase;
@@ -88,22 +100,26 @@
             border-collapse: collapse;
             margin-top: 10px;
         }
+
         .data-table th {
-            background-color: #f8fafc; /* Warna soft gray */
+            background-color: #f8fafc;
+            /* Warna soft gray */
             color: #475569;
             text-transform: uppercase;
             font-size: 10px;
             font-weight: bold;
             padding: 10px 12px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 10px solid #e2e8f0;
             text-align: left;
         }
+
         .data-table td {
             padding: 12px;
             border-bottom: 1px solid #f1f5f9;
             color: #334155;
             font-size: 11px;
         }
+
         /* Zebra striping lembut */
         .data-table tr:nth-child(even) td {
             background-color: #fafafa;
@@ -125,27 +141,30 @@
             margin-top: 50px;
             width: 100%;
         }
+
         .signature-box {
             float: right;
             width: 200px;
             text-align: center;
         }
+
         .signature-space {
             height: 70px;
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER LOGO & JUDUL -->
     <div class="header-container">
         <div class="header-left">
-            <h1 class="brand-title">PDL</h1>
-            <p class="brand-subtitle">Portibion Djewelindo Logistik</p>
+            <img src="{{ $logoBase64 }}" alt="" style="width: 200px">
         </div>
         <div class="header-right">
             <h2 class="doc-title">INVOICE</h2>
-            <p style="margin: 5px 0 0 0; color: #64748b;">No: <span class="font-bold" style="color: #00246B;">{{ $data->invoice_no ?? 'INV-2026-001' }}</span></p>
+            <p style="margin: 5px 0 0 0; color: #64748b;">No: <span class="font-bold"
+                    style="color: #00246B;">{{ $data->invoice_no ?? 'INV-2026-001' }}</span></p>
         </div>
         <div class="clear"></div>
     </div>
@@ -156,13 +175,15 @@
     <table class="meta-table">
         <tr>
             <td>
-                <div class="meta-label">Shipper / Pengirim:</div>
-                <div class="font-bold" style="font-size: 13px; color: #1e293b;">{{ $data->shipper ?? 'PT. Maju Bersama' }}</div>
-                <div style="color: #64748b; margin-top: 2px;">Logistics & Distribution Partner</div>
+                <div class="meta-label">Invoice To :</div>
+                <div class="font-bold" style="font-size: 13px; color: #1e293b;">
+                    {{ $data->perusahaan->nama_perusahaan ?? 'PT. Maju Bersama' }}</div>
+                <div style="color: #64748b; margin-top: 2px;">{{ $data->perusahaan->alamat_perusahaan }}</div>
             </td>
             <td class="text-right">
                 <div class="meta-label">Tanggal Invoice:</div>
-                <div class="font-bold" style="font-size: 13px; color: #1e293b;">{{ $invoice_date ?? '17 Mei 2026' }}</div>
+                <div class="font-bold" style="font-size: 13px; color: #1e293b;">{{ $invoice_date ?? '17 Mei 2026' }}
+                </div>
             </td>
         </tr>
     </table>
@@ -171,22 +192,21 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th style="width: 35%;">Nama Barang</th>
-                <th style="width: 20%;">Party</th>
-                <th style="width: 20%;">Weight</th>
-                <th style="width: 25%;">No. Container</th>
+                <th style="width: 35%;">Description</th>
+                <th style="width: 20%;">Quantity</th>
+                <th style="width: 20%;">RATE</th>
+                <th style="width: 25%;">AMOUNT</th>
             </tr>
         </thead>
         <tbody>
             {{-- Jika menggunakan loop Laravel, aktifkan baris ini: --}}
-            {{-- @foreach($items as $item) --}}
+            {{-- @foreach ($items as $item) --}}
             <tr>
-                <td class="font-bold" style="color: #00246B;">{{ $data->nama_barang ?? 'Suku Cadang Mesin' }}</td>
-                <td>{{ $data->party ?? '20ft FCL' }}</td>
-                <td>{{ isset($data->weight) ? number_format($data->weight) : '12,500' }} kg</td>
-                <td>
-                    <span class="badge-container">{{ $data->no_container ?? 'TGBU1234567' }}</span>
-                </td>
+                <td class="font-bold" style="color: #00246B;">{{ $data->description ?? 'Suku Cadang Mesin' }}</td>
+                <td>{{ $data->quantity }}</td>
+                <td>150,0000.00</td>
+                <td>150,0000.00</td>
+
             </tr>
             {{-- @endforeach --}}
         </tbody>
@@ -211,4 +231,5 @@
     </table>
 
 </body>
+
 </html>
