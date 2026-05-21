@@ -65,7 +65,7 @@
     <div class="d-flex flex-column gap-4">
       <!-- Logo / Brand -->
       <div class="d-flex align-items-center gap-3 px-2 py-1">
-          <img src="{{ asset('img/logopdl.png') }}" alt="" style="width: 100px">
+          <img src="{{ asset('img/logopdl.png') }}" alt="" style="width: 140px">
         
       </div>
 
@@ -83,6 +83,10 @@
         <a href="{{ route('invoice.index') }}" class="sidebar-link fw-medium rounded-3 d-flex align-items-center gap-3 px-3 py-2 fs-7">
           <i data-lucide="folder-open" style="width: 16px; height: 16px;"></i>
           <span style="font-size: 14px;">Invoice</span>
+        </a>
+        <a href="{{ route('perusahaan.index') }}" class="sidebar-link fw-medium rounded-3 d-flex align-items-center gap-3 px-3 py-2 fs-7">
+          <i data-lucide="id-card" style="width: 16px; height: 16px;"></i>
+          <span style="font-size: 14px;">Recipient</span>
         </a>
       </nav>
     </div>

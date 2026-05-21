@@ -40,7 +40,10 @@ class InvoiceController extends Controller
             'invoice_date' => 'nullable|date',
             'description' => 'nullable|string',
             'quantity' => 'nullable|string',
+            'amount' => 'nullable|string'
         ]);
+        $rate = 150000;
+        $data['amount'] = $rate*$data['quantity'];
         Invoice::create($data);
         return redirect()->route('invoice.index')->with('success', 'Invoice created successfully.');
     }

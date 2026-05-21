@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="card border-0 rounded-4 shadow-sm bg-white p-4 mt-4">
+<div class="card border-0 shadow-sm bg-white p-4 mt-4">
   <!-- Header Tabel -->
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
@@ -53,7 +53,7 @@
 
   <div class="table-responsive">
             <table class="table table-hover align-middle m-0" style="min-width: 900px;">
-                <thead class="table-light">
+                <thead class="">
                     <tr>
                         <th scope="col" class="py-3 px-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">No. Invoice</th>
                         <th scope="col" class="py-3 text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 0.05em;">Tanggal</th>

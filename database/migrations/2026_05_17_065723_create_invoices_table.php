@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('invoice_no')->unique();
             $table->date('invoice_date')->nullable();
             $table->string('description')->nullable();
-            $table->string('quantity')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('amount')->nullable();
             $table->timestamps();
         });
     }

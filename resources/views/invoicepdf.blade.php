@@ -63,7 +63,7 @@
         }
 
         .doc-title {
-            font-size: 20px;
+            font-size: 30px;
             color: #334155;
             margin: 0;
             text-transform: uppercase;
@@ -75,9 +75,34 @@
             margin: 15px 0;
         }
 
+        .enti {
+            width: 100%;
+        }
+
+        .enti::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .ship {
+            float: left;
+            width: 50%;
+            /* Atur lebar sesuai kebutuhan */
+        }
+
+        /* Sisi Kanan */
+        .ship2 {
+            float: right;
+            width: 50%;
+            /* Atur lebar sesuai kebutuhan */
+            text-align: right;
+            /* Opsional: membuat teks di dalam ship2 rata kanan */
+        }
+
         /* Info Ringkas Meta Data */
         .meta-table {
-            width: 50%;
+            width: 100%;
             margin-bottom: 30px;
         }
 
@@ -87,7 +112,6 @@
 
         .meta-label {
             font-size: 12px;
-            text-transform: uppercase;
             color: #64748b;
             font-weight: bold;
             margin-bottom: 3px;
@@ -165,13 +189,14 @@
             left: 0;
             right: 0;
             text-align: center;
-            font-size:8px;
+            font-size: 8px;
             color: #94a3b8;
             /* Warna abu-abu halus */
             border-top: 1px solid #e2e8f0;
             padding-top: 8px;
         }
-        .fbold{
+
+        .fbold {
             font-weight: bold;
         }
     </style>
@@ -186,13 +211,7 @@
             <h4>PT PORTIBION DJEWELINDO LOGISTIK</h4>
         </div>
         <div class="header-right">
-            <h2 class="doc-title">INVOICE</h2>
-            <p style="margin: 5px 0 0 0; color: #64748b;">No: <span class="font-bold"
-                    style="color: #00246B;">{{ $data->invoice_no ?? 'INV-2026-001' }}</span></p>
-            <div class="">Date: <span class="font-bold" style="font-size: 13px; color: #1e293b;">
-                    {{ date('d-m-Y', strtotime($data->invoice_date)) }}
-                </span></div>
-                
+            <h1 class="doc-title">INVOICE</h1>
         </div>
         <div class="clear"></div>
     </div>
@@ -200,55 +219,70 @@
     <div class="divider"></div>
 
     <!-- METADATA TANGGAL & SHIPPER -->
-    <table class="meta-table">
-        <tr>
-            <td>
-                <div class="meta-label">Invoice To</div>
-            </td>
-            <td>
-                :
-            </td>
-            <td>
-                <span class="font-bold" style="font-size: 13px; color: #1e293b;"> {{ $data->perusahaan->nama_perusahaan }}</span>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="meta-label">Address</div>
-            </td>
-            <td>
-                :
-            </td>
-            <td>
-                <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->alamat_perusahaan }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="margin-top: 2px;" class="meta-label">PIC</div>
-                
-            </td>
-            <td>
-                :
-            </td>
-            <td>
-                <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->pic }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="margin-top: 2px;" class="meta-label">NO Tlp</div>
-                
-            </td>
-            <td>
-                :
-            </td>
-            <td>
-                <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->no_tlp ?? '-' }}</span>
-            </td>
-        </tr>
-    </table>
+    <div class="enti">
+        <div class="ship">
+            <table class="meta-table">
+                <tr>
+                    <td>
+                        <div class="meta-label">Invoice To</div>
+                    </td>
+                    <td style="">
+                        :
+                    </td>
+                    <td style="width: 70%">
+                        <span class="font-bold" style="font-size: 13px; color: #1e293b;">
+                            {{ $data->perusahaan->nama_perusahaan }}</span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="meta-label">Address</div>
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        <span style="color: #1e293b; margin-top: 2px;">
+                            {{ $data->perusahaan->alamat_perusahaan }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="margin-top: 2px;" class="meta-label">PIC</div>
+
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->pic }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="margin-top: 2px;" class="meta-label">NO Tlp</div>
+
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        <span style="color: #1e293b; margin-top: 2px;"> {{ $data->perusahaan->no_tlp ?? '-' }}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="ship2">
+            <p style="margin: 5px 0 0 0; color: #64748b;">Invoice No: <span class="font-bold"
+                    style="color: #00246B;">{{ $data->invoice_no ?? 'INV-2026-001' }}</span></p>
+            <div class="">Date: <span class="font-bold" style="font-size: 13px; color: #1e293b;">
+                    {{ date('d-m-Y', strtotime($data->invoice_date)) }}
+                </span></div>
+        </div>
+    </div>
+
 
     <!-- TABEL UTAMA DATA BARANG -->
     <table class="data-table">
@@ -266,8 +300,8 @@
             <tr>
                 <td class="font-bold" style="color: #00246B;">{{ $data->description ?? 'Suku Cadang Mesin' }}</td>
                 <td>{{ $data->quantity . ' ' . 'DOC' }}</td>
-                <td>{{ number_format($amount['rate'], 2, ',', '.') }}</td>
-                <td>{{ number_format($amount['total'], 2, ',', '.') }}</td>
+                <td>{{ number_format($rate, 2, ',', '.') }}</td>
+                <td>{{ number_format($data->amount, 2, ',', '.') }}</td>
 
             </tr>
             {{-- @endforeach --}}
@@ -277,7 +311,7 @@
                 <td colspan=""></td>
                 <td colspan=""></td>
                 <td class=" grand-total-cell">GRAND TOTAL:</td>
-                <td class="grand-total-cell">{{ 'Rp.' . ' ' . number_format($amount['total'], 2, ',', '.') }}</td>
+                <td class="grand-total-cell">{{ 'Rp.' . ' ' . number_format($data->amount, 2, ',', '.') }}</td>
             </tr>
         </tfoot>
     </table>
@@ -296,7 +330,8 @@
             <td style="width: 40%;">
                 <div class="signature-box">
                     <div style="color: #64748b; font-size: 11px; margin-bottom: 10px;">Approve By:</div>
-                    <div class="signature-space"><img src="{{ $signBase64 }}" alt="" style="width: 120px"></div>
+                    <div class="signature-space"><img src="{{ $signBase64 }}" alt="" style="width: 120px">
+                    </div>
                     <div class="divider" style="margin: 5px 0; border-top: 1px solid #334155;"></div>
                     <div class="font-bold" style="color: #00246B;">Darius</div>
                 </div>

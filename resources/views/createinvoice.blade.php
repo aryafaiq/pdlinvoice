@@ -41,12 +41,42 @@
 @endsection
 
 @php
+    $date = date('m');
+
+    if ($date == 1) {
+        $date == 'I';
+    }elseif ($date == 2) {
+        $date == 'II';
+    }elseif ($date == 3) {
+        $date = 'III';
+    }elseif ($date == 4) {
+        $date = 'IV';
+    }elseif ($date == 5) {
+        $date = 'V';
+    }elseif ($date == 6) {
+        $date = 'VI';
+    }elseif ($date == 7) {
+        $date = 'VII';
+    }elseif ($date == 8) {
+        $date = 'VIII';
+    }elseif ($date == 9) {
+        $date = 'IX';
+    }elseif ($date == 10) {
+        $date = 'X';
+    }elseif ($date == 11) {
+        $date = 'XI';
+    }else{
+        $date = 'XII';
+    }
+
+
+
     if ($lastinvoice) {
         $nomor_urut = (int) explode('/', $lastinvoice)[0] + 1;
     } else {
         $nomor_urut = 1;
     }
-    $invoice = $nomor_urut . '/PDL/INV/V/2026';
+    $invoice = $nomor_urut . '/PDL/INV/'.$date.'/2026';
 @endphp
 @section('content')
     <div class="container">
@@ -64,7 +94,7 @@
                             <h2 class="fs-4 fw-bold text-dark m-0">SHIPPING DATA</h2>
                             <div class="d-flex justify-content-end gap-2">
                                 <button type="button"
-                                    class="btn btn-secondary rounded-3 px-4 text-light text-sm font-medium"
+                                    class="btn btn-secondary px-4 text-light text-sm font-medium"
                                     onclick="window.location.href='{{ route('invoice.index') }}'">Batal</button>
                                 <button type="submit" class="btn btn-submit">Simpan Data</button>
                             </div>
