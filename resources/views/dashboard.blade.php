@@ -23,14 +23,14 @@
     <div class="row">
             
             <!-- Card 1: Total Data Invoice -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-3 col-lg-3">
                 <!-- Ditambahkan class 'hover-animate' -->
                 <div class="card border-0 shadow-sm h-100 hover-animate">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>
                                 <h6 class="card-subtitle text-muted text-uppercase fw-bold fs-7">Total Invoice</h6>
-                                <h2 class="card-title my-2 text-dark">{{ $data1 }}</h2>
+                                <p class="card-title my-2 text-dark"style="font-size: 30px">{{ $data1 }}</p>
                             </div>
                             <div class="bg-primary-subtle text-primary rounded p-1">
                                 <i data-lucide="folder-open"></i>  
@@ -41,6 +41,23 @@
             </div>
 
             <!-- Card 2: Sum Seluruh Harga Invoice -->
+            <div class="col-md-3">
+                <!-- Ditambahkan class 'hover-animate' -->
+                <div class="card border-0 shadow-sm h-100 hover-animate">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h6 class="card-subtitle text-muted text-uppercase fw-bold fs-7">Total EDI</h6>
+                                <p class="card-title my-2 text-dark" style="font-size: 30px">{{ $data2 }}</p>
+                            </div>
+                            <div class="bg-success-subtle text-success rounded p-1">
+                                <i data-lucide="landmark"></i>  
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
             <div class="col-md-6">
                 <!-- Ditambahkan class 'hover-animate' -->
                 <div class="card border-0 shadow-sm h-100 hover-animate">
@@ -48,7 +65,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>
                                 <h6 class="card-subtitle text-muted text-uppercase fw-bold fs-7">Total Pendapatan</h6>
-                                <h3 class="card-title  my-2 text-dark">{{ 'Rp.' . ' ' . number_format($data2, 0, ',', '.') }}</h3>
+                                <p class="card-title  my-2 text-dark"style="font-size: 30px">{{ 'Rp.' . ' ' . number_format($data3, 0, ',', '.') }}</p>
                             </div>
                             <div class="bg-success-subtle text-success rounded p-1">
                                 <i data-lucide="landmark"></i>  

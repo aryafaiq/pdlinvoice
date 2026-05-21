@@ -35,44 +35,57 @@
                     <div class="mb-4">
                         <h2 class="fs-4 fw-bold text-dark m-0">INVOICE</h2>
                     </div>
-
                     <!-- FORM START -->
                     <form action="{{ route('invoice.update', $invoice->id) }}" method="POST">
                         @csrf
                         @method('put')
                         <!-- Row 1: Dua Kolom (Nama & Email) -->
                         <div class="row g-3 mb-3">
+                            <div class="row g-3 mb-3">
+                            <div class="col-sm-12">
+                                <select class="form-select" aria-label="Default select example" name="perusahaan_id">
+                                    @foreach ($perusahaan as $p)
+                                        <option value="{{ $p->id }}" {{ $invoice->perusahaan_id == $p->id ? 'selected' : '' }}>
+                                            {{ $p->nama_perusahaan }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                            </div>
                             <div class="col-sm-6">
                                 <label for="inputNama" class="form-label text-secondary fw-medium small">Date</label>
                                 <input type="date" class="form-control rounded-3" id="inputNama" name="invoice_date" value="{{ $invoice->invoice_date }}">
+                                @error('invoice_date')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="" class="form-label text-secondary fw-medium small">No Invoice</label>
-                                <input type="text" class="form-control rounded-3" id="inputEmail" name="invoice_no" disabled placeholder="Contoh: INV-001" value="{{ $invoice->invoice_no }}">
+                                <input type="text" class="form-control rounded-3" id="inputEmail" name="invoice_no"
+                                    placeholder="Contoh: INV-001" value="{{ $invoice->invoice_no }}" disabled readonly>
+                                @error('invoice_no')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="" class="form-label text-secondary fw-medium small">Description</label>
+                                <input type="text" class="form-control rounded-3" id="inputEmail" name="description"
+                                    placeholder="DOC" value="{{ $invoice->description }}">
+                                @error('description')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="" class="form-label text-secondary fw-medium small">Quantity</label>
+                                <input type="text" class="form-control rounded-3" id="inputEmail" name="quantity"
+                                    placeholder="1" value="{{ $invoice->quantity }}">
+                                @error('quantity')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
-                        <div class="row g-3 mb-3">
-                            <div class="col-sm-6">
-                                <label for="inputNama" class="form-label text-secondary fw-medium small">Nama Barang</label>
-                                <input type="text" class="form-control rounded-3" id="inputNama" name="nama_barang" value="{{ $invoice->nama_barang }}">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">Shipper</label>
-                                <input type="text" class="form-control rounded-3" id="" name="shipper" value="{{ $invoice->shipper }}">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">Party</label>
-                                <input type="text" class="form-control rounded-3" id="" name="party" value="{{ $invoice->party }}">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">Weight</label>
-                                <input type="number" class="form-control rounded-3" id="" name="weight" value="{{ $invoice->weight }}">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="" class="form-label text-secondary fw-medium small">No Container</label>
-                                <input type="text" class="form-control rounded-3" id="" name="no_container" value="{{ $invoice->no_container }}">
-                            </div>
-                        </div>  
+                        </div>
+                        
 
                         <!-- Row 5: Checkbox Syarat & Ketentuan -->
 

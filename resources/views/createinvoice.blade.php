@@ -45,38 +45,36 @@
 
     if ($date == 1) {
         $date == 'I';
-    }elseif ($date == 2) {
+    } elseif ($date == 2) {
         $date == 'II';
-    }elseif ($date == 3) {
+    } elseif ($date == 3) {
         $date = 'III';
-    }elseif ($date == 4) {
+    } elseif ($date == 4) {
         $date = 'IV';
-    }elseif ($date == 5) {
+    } elseif ($date == 5) {
         $date = 'V';
-    }elseif ($date == 6) {
+    } elseif ($date == 6) {
         $date = 'VI';
-    }elseif ($date == 7) {
+    } elseif ($date == 7) {
         $date = 'VII';
-    }elseif ($date == 8) {
+    } elseif ($date == 8) {
         $date = 'VIII';
-    }elseif ($date == 9) {
+    } elseif ($date == 9) {
         $date = 'IX';
-    }elseif ($date == 10) {
+    } elseif ($date == 10) {
         $date = 'X';
-    }elseif ($date == 11) {
+    } elseif ($date == 11) {
         $date = 'XI';
-    }else{
+    } else {
         $date = 'XII';
     }
-
-
 
     if ($lastinvoice) {
         $nomor_urut = (int) explode('/', $lastinvoice)[0] + 1;
     } else {
         $nomor_urut = 1;
     }
-    $invoice = $nomor_urut . '/PDL/INV/'.$date.'/2026';
+    $invoice = $nomor_urut . '/PDL/INV/' . $date . '/2026';
 @endphp
 @section('content')
     <div class="container">
@@ -93,8 +91,7 @@
                         <div class="mb-4">
                             <h2 class="fs-4 fw-bold text-dark m-0">SHIPPING DATA</h2>
                             <div class="d-flex justify-content-end gap-2">
-                                <button type="button"
-                                    class="btn btn-secondary px-4 text-light text-sm font-medium"
+                                <button type="button" class="btn btn-secondary px-4 text-light text-sm font-medium"
                                     onclick="window.location.href='{{ route('invoice.index') }}'">Batal</button>
                                 <button type="submit" class="btn btn-submit">Simpan Data</button>
                             </div>
@@ -111,26 +108,45 @@
                                         <option value="{{ $pt->id }}">{{ $pt->nama_perusahaan }}</option>
                                     @endforeach
                                 </select>
+
                             </div>
                             <div class="col-sm-6">
                                 <label for="inputNama" class="form-label text-secondary fw-medium small">Date</label>
                                 <input type="date" class="form-control rounded-3" id="inputNama" name="invoice_date">
+                                @error('invoice_date')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="" class="form-label text-secondary fw-medium small">No Invoice</label>
                                 <input type="text" class="form-control rounded-3" id="inputEmail" name="invoice_no"
                                     placeholder="Contoh: INV-001" value="{{ $invoice }}">
+                                @error('invoice_no')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="" class="form-label text-secondary fw-medium small">Description</label>
                                 <input type="text" class="form-control rounded-3" id="inputEmail" name="description"
                                     placeholder="DOC" value="">
+                                @error('description')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="" class="form-label text-secondary fw-medium small">Quantity</label>
                                 <input type="text" class="form-control rounded-3" id="inputEmail" name="quantity"
                                     placeholder="1" value="">
+                                @error('quantity')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
+                            <div class="col-sm-6">
+                                <label for="" class="form-label text-secondary fw-medium small">Note*</label>
+                                <textarea type="textarea" class="form-control rounded-3" id="inputEmail" name="note"
+                                    placeholder="" value=""></textarea>
+                            </div>
+                            
                         </div>
                     </div>
                 </form>

@@ -71,8 +71,8 @@
 
       <!-- Menu Utama -->
       <nav class="d-flex flex-column gap-1">
-        <p class="px-2 text-muted text-uppercase fw-bold letter-spacing-wide m-0 mb-2" style="font-size: 10px;">Menu Utama</p>
-        
+      <p class="text-muted fs-10">PT PORTIBION DJEWELINDO LOGISTIK</p>
+      <hr class="bg-navy">        
         <!-- Active Item -->
         <a href="/" class="sidebar-link fw-medium rounded-3 d-flex align-items-center gap-3 px-3 py-2 fs-7">
           <i data-lucide="layout-dashboard" class="text-indigo" style="width: 16px; height: 16px;"></i>

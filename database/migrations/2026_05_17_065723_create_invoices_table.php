@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('amount')->nullable();
+            $table->string('status')->default('Payment');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

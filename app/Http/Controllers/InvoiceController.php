@@ -58,8 +58,9 @@ class InvoiceController extends Controller
      */
     public function edit(string $id)
     {
-        $invoice = Invoice::findOrFail($id);
-        return view('editinvoice', compact('invoice'));
+        $perusahaan = Perusahaan::all();
+        $invoice = Invoice::with('perusahaan')->findOrFail($id);
+        return view('editinvoice', compact('invoice','perusahaan'));
     }
 
     /**
@@ -69,6 +70,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::findOrFail($id);
         $data = $request->all();
+        $data['amount'] = 150000*$data['quantity'];
         $invoice->update($data);
         return redirect()->route('invoice.index')->with('success', 'Invoice updated successfully.');
     }
