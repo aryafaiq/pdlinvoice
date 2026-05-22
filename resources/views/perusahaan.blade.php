@@ -47,7 +47,7 @@
                     <div class="card p-4 bg-white">
                         <!-- Form Header -->
                         <div class="mb-4">
-                            <h2 class="fs-4 fw-bold text-dark m-0">SHIPPING DATA</h2>
+                            <h2 class="fs-4 fw-bold text-dark m-0">Recipient Data</h2>
                             <div class="d-flex justify-content-end gap-2">
                                 <button type="submit" class="btn btn-submit">Simpan Data</button>
                             </div>

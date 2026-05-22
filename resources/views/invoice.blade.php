@@ -94,13 +94,16 @@
 
                             <td class="text-center">
                                 <div class="d-inline-flex gap-1">
+                                    @if ($invoice->status == 'Payment')    
                                     <a href="{{ route('invoice.edit', $invoice->id) }}"
                                         class="btn btn-light btn-sm text-primary p-2 rounded-3 border-0" title="Edit"><i
                                             data-lucide="pencil" style="width: 14px; height: 14px;"></i></a>
-                                    <a href="{{ route('invoice.pdf', $invoice->id) }}" target="_blank"
+                                    @endif
+                                            <a href="{{ route('invoice.pdf', $invoice->id) }}" target="_blank"
                                         class="btn btn-light btn-sm text-primary p-2 rounded-3 border-0"
                                         title="Generate PDF"><i data-lucide="file-text"
                                             style="width: 14px; height: 14px;"></i></a>
+                                    @if ($invoice->status == 'Payment')
                                     <form action="{{ route('invoice.destroy', $invoice->id) }}" method="POST"
                                         style="display: inline;">
                                         @csrf
@@ -110,6 +113,7 @@
                                             title="Hapus"><i data-lucide="trash-2"
                                                 style="width: 14px; height: 14px;"></i></button>
                                     </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

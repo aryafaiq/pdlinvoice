@@ -83,6 +83,16 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="col-sm-12">
+                                <select class="form-select" aria-label="Default select example" name="status">
+                                        <option value="Payment" {{ $invoice->status == 'Payment' ? 'selected' : '' }}>
+                                            Payment
+                                        </option>
+                                        <option value="Approve" {{ $invoice->status == 'Approve' ? 'selected' : '' }}>Approve</option>
+                                </select>
+
+                            </div>
+                            
                         </div>
                         </div>
                         
