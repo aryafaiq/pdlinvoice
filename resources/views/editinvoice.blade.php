@@ -83,6 +83,11 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="col-sm-6">
+                                <label for="" class="form-label text-secondary fw-medium small">Note*</label>
+                                <textarea type="textarea" class="form-control rounded-3" id="inputEmail" name="note"
+                                    placeholder="" value="{{ $invoice->note }}">{{ $invoice->note }}</textarea>
+                            </div>
                             <div class="col-sm-12">
                                 <select class="form-select" aria-label="Default select example" name="status">
                                         <option value="Payment" {{ $invoice->status == 'Payment' ? 'selected' : '' }}>

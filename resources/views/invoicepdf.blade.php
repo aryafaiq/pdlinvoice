@@ -306,6 +306,10 @@
             </tr>
             {{-- @endforeach --}}
         </tbody>
+        <div>
+            <p style="color: #94a3b8">Note*</p>
+            <p>{!!nl2br($data->note)!!}</p>
+        </div>
         <tfoot>
             <tr class="total-row">
                 <td colspan=""></td>

@@ -33,15 +33,18 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $data = $request->validate([
             'perusahaan_id' => 'required',
             'invoice_no' => 'required|unique:invoices,invoice_no',
             'invoice_date' => 'nullable|date',
             'description' => 'nullable|string',
             'quantity' => 'nullable|string',
-            'amount' => 'nullable|string'
+            'amount' => 'nullable|string',
+            'status' => 'nullable|string',
+            'note' => 'nullable|string'
         ]);
+        
         $rate = 150000;
         $data['amount'] = $rate*$data['quantity'];
         Invoice::create($data);

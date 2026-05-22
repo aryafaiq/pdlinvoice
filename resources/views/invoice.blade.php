@@ -47,7 +47,8 @@
         </div>
         @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
-            {{ session('success') }}
+            <p>{{ session('success') }}</p>
+            
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
@@ -90,7 +91,7 @@
                             <td>{{ $invoice->perusahaan->nama_perusahaan }}</td>
                             <td>{{ $invoice->quantity }}</td>
                             <td>{{ $invoice->perusahaan->pic }}</td>
-                            <td class="{{ $invoice->status == 'Payment' ? 'border-bottom border-warning' : 'border-bottom border-success' }}">{{ $invoice->status }}</td>
+                            <td class="{{ $invoice->status == 'Payment' ? 'border-bottom border-warning' : 'border-bottom border-success' }}"><span class="{{ $invoice->status == 'Payment' ? 'bg-warning' : 'bg-success' }} p-1 rounded">{{ $invoice->status }}</span></td>
 
                             <td class="text-center">
                                 <div class="d-inline-flex gap-1">
