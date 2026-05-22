@@ -209,6 +209,8 @@
         <div class="header-left">
             <img src="{{ $logoBase64 }}" alt="" style="width: 200px">
             <h4>PT PORTIBION DJEWELINDO LOGISTIK</h4>
+            <p style="color: #94a3b8; font-size: 9px">JL EDAM II NO.15C RT.002 RW.016, TANJUNG PRIOK, TANJUNG PRIOK, KOTA ADMINISTRASI
+                JAKARTA UTARA, DAERAH KHUSUS IBUKOTA JAKARTA</p>
         </div>
         <div class="header-right">
             <h1 class="doc-title">INVOICE</h1>
@@ -329,7 +331,7 @@
 
 
     <!-- KETERANGAN TAMBAHAN / TANDA TANGAN -->
-    <table class="footer-section">
+    <table class="footer-section header-right">
         <tr>
             <td style="width: 40%;">
                 <div class="signature-box">

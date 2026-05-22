@@ -13,6 +13,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
+        
         $invoices = Invoice::with('perusahaan')->get();
         return view('invoice', compact('invoices'));
     }
