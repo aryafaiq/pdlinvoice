@@ -119,6 +119,11 @@ body{
                     <i data-lucide="id-card" style="width: 16px; height: 16px;"></i>
                     <span style="font-size: 14px;">Recipient</span>
                 </a>
+                <a href=""
+                    class="sidebar-link fw-medium rounded-3 d-flex align-items-center gap-3 px-3 py-2 fs-7">
+                    <i data-lucide="ship" style="width: 16px; height: 16px;"></i>
+                    <span style="font-size: 14px;">Dokumen Pabean</span>
+                </a>
             </nav>
         </div>
 
