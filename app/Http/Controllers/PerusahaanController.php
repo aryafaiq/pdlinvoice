@@ -22,6 +22,8 @@ class PerusahaanController extends Controller
     public function create()
     {
         
+    return view('createperusahaan');
+
     }
 
     /**
@@ -31,7 +33,7 @@ class PerusahaanController extends Controller
     {
         $data = $request->all();
         Perusahaan::create($data);
-        return redirect()->back();
+        return redirect()->route('perusahaan.index')->with('success', 'Perusahaan created successfully.');
     }
 
     /**
