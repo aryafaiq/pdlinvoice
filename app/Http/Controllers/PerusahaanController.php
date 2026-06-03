@@ -13,7 +13,7 @@ class PerusahaanController extends Controller
     public function index()
     {
         $perusahaan = Perusahaan::all();
-        return view('perusahaan',compact('perusahaan'));
+        return view('perusahaan', compact('perusahaan'));
     }
 
     /**
@@ -31,7 +31,7 @@ class PerusahaanController extends Controller
     {
         $data = $request->all();
         Perusahaan::create($data);
-        return redirect()->back();
+        return redirect()->route('perusahaan.index')->with('success', 'created successfully.');
     }
 
     /**
