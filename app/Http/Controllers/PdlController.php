@@ -20,7 +20,7 @@ class PdlController extends Controller
         $search = $request->search;
         
         if ($search) {
-            $invoices = Invoice::where('invoice_no','like', "%".$search."%")->get();
+            $invoices = Invoice::where('invoice_no','like', $search."%")->get();
         } else {
             $invoices = Invoice::with('perusahaan')->get();
         }

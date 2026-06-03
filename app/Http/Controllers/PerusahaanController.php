@@ -31,7 +31,7 @@ class PerusahaanController extends Controller
     {
         $data = $request->all();
         Perusahaan::create($data);
-        return redirect()->route('perusahaan.index')->with('success', 'created successfully.');
+        return redirect()->route('perusahaan.index')->with('success', 'Perusahaan created successfully.');
     }
 
     /**
