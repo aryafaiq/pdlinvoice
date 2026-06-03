@@ -36,7 +36,7 @@
 @endsection
 @section('content')
     <div>
-        <div class="d-flex  align-items-start justify-content-between">
+        <div class="d-flex align-items-start justify-content-between">
             <div class="">
                 <a href="{{ route('invoice.create') }}"
                     class="btn-invoice fw-medium rounded-3 d-flex align-items-center gap-3 px-3 py-2 fs-7">

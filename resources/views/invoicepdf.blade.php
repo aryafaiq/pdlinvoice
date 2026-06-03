@@ -44,7 +44,6 @@
             float: right;
             width: 50%;
             text-align: right;
-            margin-top: 5%
         }
 
         .brand-title {
@@ -103,7 +102,6 @@
         /* Info Ringkas Meta Data */
         .meta-table {
             width: 100%;
-            margin-bottom: 30px;
         }
 
         .meta-table td {
@@ -132,13 +130,12 @@
             font-size: 10px;
             font-weight: bold;
             padding: 10px 12px;
-            border-bottom: 10px solid #e2e8f0;
             text-align: left;
         }
 
         .data-table td {
             padding: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            
             color: #334155;
             font-size: 11px;
         }
@@ -168,7 +165,6 @@
 
         /* Footer / Tanda Tangan */
         .footer-section {
-            margin-top: 50px;
             width: 100%;
         }
 
@@ -209,7 +205,8 @@
         <div class="header-left">
             <img src="{{ $logoBase64 }}" alt="" style="width: 200px">
             <h4>PT PORTIBION DJEWELINDO LOGISTIK</h4>
-            <p style="color: #94a3b8; font-size: 9px">JL EDAM II NO.15C RT.002 RW.016, TANJUNG PRIOK, TANJUNG PRIOK, KOTA ADMINISTRASI
+            <p style="color: #94a3b8; font-size: 9px">JL EDAM II NO.15C RT.002 RW.016, TANJUNG PRIOK, TANJUNG PRIOK, KOTA
+                ADMINISTRASI
                 JAKARTA UTARA, DAERAH KHUSUS IBUKOTA JAKARTA</p>
         </div>
         <div class="header-right">
@@ -304,13 +301,12 @@
                 <td>{{ $data->quantity . ' ' . 'DOC' }}</td>
                 <td>{{ number_format($rate, 2, ',', '.') }}</td>
                 <td>{{ number_format($data->amount, 2, ',', '.') }}</td>
-
             </tr>
             {{-- @endforeach --}}
         </tbody>
         <div>
-            <p style="color: #94a3b8">Note*</p>
-            <p>{!!nl2br($data->note)!!}</p>
+            <p style="color: #94a3b8">*Note/Aju PIB</p>
+            <p>{!! nl2br($data->note) !!}</p>
         </div>
         <tfoot>
             <tr class="total-row">

@@ -99,7 +99,7 @@ body{
 
             <!-- Menu Utama -->
             <nav class="d-flex flex-column gap-1">
-                <p class="text-muted fs-10">PT PORTIBION DJEWELINDO LOGISTIK</p>
+                <p class="text-muted fs-10 fw-bold">PT PORTIBION DJEWELINDO LOGISTIK</p>
                 <hr class="bg-navy">
                 <!-- Active Item -->
                 <a href="/"
